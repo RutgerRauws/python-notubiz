@@ -2,8 +2,9 @@ from attrs import define, field
 import cattrs
 from cattrs import transform_error
 
-from notubiz.api.agenda_item import AgendaItem, NotubizAgendaItems
 from notubiz import ApiClient
+from notubiz.api._helpers import get_title, get_location
+from notubiz.api.agenda_item import AgendaItem, NotubizAgendaItems
 
 from typing import Optional, Dict, Any
 
@@ -16,20 +17,10 @@ class Meeting:
     agenda_items : list[AgendaItem] = field(factory=list)
 
 
-def get_attribute(attributes, id) -> str:
-    attribute = [attribute for attribute in attributes if attribute["id"] == id]
-
-    if len(attribute) <= 0:
-        raise Exception("Did not find attribute")
-    elif len(attribute) > 1:
-        raise Exception("Found attribute collision")
-
-    return attribute[0]["value"]
-
 def meeting_structure_hook(data: Dict[str, Any], cls: type) -> Meeting:
     attributes = data.get("attributes", [])
-    title = get_attribute(attributes, 1)
-    location = get_attribute(attributes, 50)
+    title = get_title(attributes)
+    location = get_location(attributes)
 
     # Use cattrs to structure the Meeting fields
     agenda_items = NotubizAgendaItems.from_json(data["agenda_items"])
