@@ -58,7 +58,7 @@ class NotubizSpeakers:
         json_object = self.api_client.get("speakers")
         return NotubizSpeakers.from_json(json_object)
     
-    def from_json(json_object : any):
+    def from_json(json_object : any) -> Speakers:
         c = cattrs.Converter()
 
         unst_hook = make_dict_unstructure_fn(Speakers, c, speakers=override(rename="speaker"))
