@@ -40,7 +40,7 @@ class Speakers:
         
         return None
     
-    
+    # TODO: return all speaker objects (there can be multiple)
     def find_by_person_id(self, person_id : int):
         for speaker in self.speakers:
             if speaker.attributes.person_id == person_id:
