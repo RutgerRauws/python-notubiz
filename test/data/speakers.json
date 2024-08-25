@@ -1,0 +1,57 @@
+{
+  "speakers": {
+    "speaker": [
+      {
+        "photo": "https://assets.notubiz.nl/pasfotos/6311e7d369b53.jpg",
+        "party": "",
+        "email": "",
+        "initials": "",
+        "firstname": "Rutger",
+        "lastname": "Rauws",
+        "sex": "m",
+        "function": "Commissielid",
+        "url": "",
+        "@attributes": {
+          "id": 1,
+          "person_id": 1,
+          "active": 0,
+          "last_modified": "2022-04-08 10:05:21"
+        }
+      },
+      {
+        "photo": "https://assets.notubiz.nl/pasfotos/6311e7d369b53.jpg",
+        "party": "",
+        "email": "rutger.rauws@eindhoven.nl",
+        "initials": "",
+        "firstname": "Rutger",
+        "lastname": "Rauws",
+        "sex": "m",
+        "function": "Raadslid",
+        "url": "",
+        "@attributes": {
+          "id": 2,
+          "person_id": 1,
+          "active": 1,
+          "last_modified": "2024-04-08 08:56:57"
+        }
+      },
+      {
+        "photo": "",
+        "party": "",
+        "email": "",
+        "initials": "",
+        "firstname": "Jans",
+        "lastname": "Janssen",
+        "sex": "v",
+        "function": "Raadslid",
+        "url": "",
+        "@attributes": {
+          "id": 3,
+          "person_id": 2,
+          "active": 1,
+          "last_modified": "2024-04-08 08:56:57"
+        }
+      }
+    ]
+  }
+}
