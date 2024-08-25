@@ -1,6 +1,8 @@
 # Notubiz
 
 ## Requirements 
+Python >= 3.9
+
 `py -m venv .venv`
 `pip install pip-compile-multi`
 
