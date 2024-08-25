@@ -1,0 +1,1 @@
+from notubiz.api.speakers import NotubizSpeakers
