@@ -60,7 +60,7 @@ def agenda_item_structure_hook(data: Dict[str, Any], cls: type) -> AgendaItem:
 
     return AgendaItem(
         id=data["id"],
-        last_modified = data["last_modified"],
+        last_modified = parse_date(data["last_modified"]),
         title = get_title(attributes),
         description = get_description(attributes),
         start_date = get_start_date(attributes),

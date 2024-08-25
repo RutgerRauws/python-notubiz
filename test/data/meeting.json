@@ -1,0 +1,803 @@
+{
+    "meeting": {
+      "organisation": {
+        "id": 686,
+        "self": "api.notubiz.nl/organisations/686"
+      },
+      "gremium": {
+        "id": 8203,
+        "self": "api.notubiz.nl/organisations/686/gremia/8203"
+      },
+      "module_items": [],
+      "parent": {
+        "id": 1147922,
+        "self": "api.notubiz.nl/events/1147922"
+      },
+      "documents": [],
+      "id": 1147925,
+      "self": "api.notubiz.nl/events/meetings/1147925",
+      "type": "meeting",
+      "permission_group": "public",
+      "body": "council",
+      "confidential": 0,
+      "announcement": false,
+      "canceled": false,
+      "inactive": false,
+      "creation_date": "2023-09-19 10:02:35",
+      "last_modified": "2024-04-17 10:28:01",
+      "order": 1,
+      "live": false,
+      "archive_state": "unarchived",
+      "archive_state_last_modified": null,
+      "allow_subscriptions": false,
+      "subscriptions": [],
+      "url": "https://eindhoven.raadsinformatie.nl/vergadering/1147925/Meningsvorming+Raadzaal",
+      "salutation": null,
+      "template": false,
+      "attributes": [
+        {
+          "id": 1,
+          "reference_model": null,
+          "value": "Meningsvorming Raadzaal"
+        },
+        {
+          "id": 50,
+          "reference_model": null,
+          "value": "Raadzaal"
+        },
+        {
+          "id": 72,
+          "reference_model": null,
+          "value": ""
+        },
+        {
+          "id": 68,
+          "reference_model": null,
+          "value": ""
+        },
+        {
+          "id": 3,
+          "reference_model": null,
+          "value": ""
+        }
+      ],
+      "plannings": [
+        {
+          "start_date": "2024-04-16 17:00:00",
+          "end_date": "2024-04-16 21:15:00"
+        }
+      ],
+      "agenda_items": [
+        {
+          "parent": null,
+          "meeting": {
+            "id": 1147925,
+            "self": "api.notubiz.nl/events/meetings/1147925"
+          },
+          "type_data": {
+            "self": "api.notubiz.nl/agenda_items/agenda_points/7853341",
+            "heading": false,
+            "title_prefix": "1.",
+            "attributes": [
+              {
+                "id": 1,
+                "reference_model": null,
+                "value": "Opening meningsvormende vergadering en vaststellen volgorde van de agenda"
+              },
+              {
+                "id": 82,
+                "reference_model": null,
+                "value": "2024-04-16 17:00:00"
+              },
+              {
+                "id": 83,
+                "reference_model": null,
+                "value": "2024-04-16 17:00:00"
+              }
+            ]
+          },
+          "documents": [],
+          "agenda_items": [],
+          "module_items": [],
+          "id": 7853341,
+          "type": "agenda_point",
+          "order": 1,
+          "start_offset": "651",
+          "end_offset": "670",
+          "start_date": null,
+          "end_date": null,
+          "confidential": 0,
+          "permission_group": "public",
+          "last_modified": "2024-03-29 10:08:56"
+        },
+        {
+          "parent": null,
+          "meeting": {
+            "id": 1147925,
+            "self": "api.notubiz.nl/events/meetings/1147925"
+          },
+          "type_data": {
+            "self": "api.notubiz.nl/agenda_items/agenda_points/8309637",
+            "heading": false,
+            "title_prefix": "2.",
+            "attributes": [
+              {
+                "id": 1,
+                "reference_model": null,
+                "value": "Commissienotitie Omgevingsvisie 2.0 Eindhoven"
+              },
+              {
+                "id": 24,
+                "reference_model": null,
+                "value": "24bst00189"
+              },
+              {
+                "id": 72,
+                "reference_model": null,
+                "value": "A. Becker"
+              },
+              {
+                "id": 82,
+                "reference_model": null,
+                "value": "2024-04-16 17:00:00"
+              },
+              {
+                "id": 68,
+                "reference_model": null,
+                "value": "T. Veuskens"
+              },
+              {
+                "id": 83,
+                "reference_model": null,
+                "value": "2024-04-16 18:00:00"
+              },
+              {
+                "id": 23,
+                "reference_model": null,
+                "value": "M. Verhees"
+              },
+              {
+                "id": 3,
+                "reference_model": null,
+                "value": "<p>Behandeltijd: 3 minuten spreektijd per fractie.</p>\n<p><em>Ingekomen brief 24-079 betrekken bij de behandeling van de commissienotitie.</em></p>"
+              }
+            ]
+          },
+          "documents": [],
+          "agenda_items": [],
+          "id": 8309637,
+          "type": "agenda_point",
+          "order": 3,
+          "start_offset": "670",
+          "end_offset": "4682",
+          "start_date": null,
+          "end_date": null,
+          "confidential": 0,
+          "permission_group": "public",
+          "last_modified": "2024-04-03 12:35:26",
+          "module_items": [
+            {
+              "id": 926664,
+              "self": "api.notubiz.nl/modules/0/items/926664",
+              "field_id": 54
+            },
+            {
+              "id": 930238,
+              "self": "api.notubiz.nl/modules/0/items/930238",
+              "field_id": 54
+            }
+          ]
+        },
+        {
+          "parent": null,
+          "meeting": {
+            "id": 1147925,
+            "self": "api.notubiz.nl/events/meetings/1147925"
+          },
+          "type_data": {
+            "self": "api.notubiz.nl/agenda_items/agenda_points/8329704",
+            "heading": true,
+            "title_prefix": null,
+            "attributes": [
+              {
+                "id": 1,
+                "reference_model": null,
+                "value": "Pauze"
+              },
+              {
+                "id": 82,
+                "reference_model": null,
+                "value": "2024-04-16 18:00:00"
+              },
+              {
+                "id": 83,
+                "reference_model": null,
+                "value": "2024-04-16 19:00:00"
+              }
+            ]
+          },
+          "documents": [],
+          "agenda_items": [],
+          "module_items": [],
+          "id": 8329704,
+          "type": "agenda_point",
+          "order": 6,
+          "start_offset": "4682",
+          "end_offset": "7807",
+          "start_date": null,
+          "end_date": null,
+          "confidential": 0,
+          "permission_group": "public",
+          "last_modified": "2024-03-29 10:08:56"
+        },
+        {
+          "parent": null,
+          "meeting": {
+            "id": 1147925,
+            "self": "api.notubiz.nl/events/meetings/1147925"
+          },
+          "type_data": {
+            "self": "api.notubiz.nl/agenda_items/agenda_points/7853346",
+            "heading": false,
+            "title_prefix": "3.",
+            "attributes": [
+              {
+                "id": 1,
+                "reference_model": null,
+                "value": "Hamerstukken"
+              },
+              {
+                "id": 72,
+                "reference_model": null,
+                "value": "N. Groot"
+              },
+              {
+                "id": 82,
+                "reference_model": null,
+                "value": "2024-04-16 19:00:00"
+              },
+              {
+                "id": 68,
+                "reference_model": null,
+                "value": "T. Veuskens"
+              },
+              {
+                "id": 83,
+                "reference_model": null,
+                "value": "2024-04-16 19:15:00"
+              },
+              {
+                "id": 3,
+                "reference_model": null,
+                "value": "<p>Woordmelding door fracties: fracties kunnen hun woordmeldingen kenbaar maken op de dag van de vergadering voor 12:00 uur onder vermelding van het onderwerp.</p>"
+              }
+            ]
+          },
+          "module_items": [],
+          "id": 7853346,
+          "type": "agenda_point",
+          "order": 7,
+          "start_offset": "7807",
+          "end_offset": "7838",
+          "start_date": null,
+          "end_date": null,
+          "confidential": 0,
+          "permission_group": "public",
+          "last_modified": "2024-04-03 12:35:43",
+          "documents": [
+            {
+              "self": "api.notubiz.nl/document/13960163",
+              "url": "https://api.notubiz.nl/document/13960163/1",
+              "title": "Behandeladvies Hamerstukken 9 en 16 april 2024",
+              "description": "",
+              "date": "",
+              "case_code": "",
+              "policy_field": "",
+              "category": "",
+              "id": 13960163,
+              "confidential": 0,
+              "publication_date": "2024-08-25",
+              "last_modified": "2024-03-22 11:37:17",
+              "version": 1,
+              "types": [
+                {
+                  "id": 114,
+                  "value": "Advies"
+                }
+              ],
+              "versions": [
+                {
+                  "type": "file",
+                  "mime_type": "application/pdf",
+                  "file_name": "Behandeladvies Hamerstukken 9 en 16 april 2024.pdf",
+                  "file_size": 130398,
+                  "id": 1
+                }
+              ]
+            }
+          ],
+          "agenda_items": [
+            {
+              "parent": {
+                "id": 7853346,
+                "self": "api.notubiz.nl/agenda_items/7853346"
+              },
+              "meeting": {
+                "id": 1147925,
+                "self": "api.notubiz.nl/events/meetings/1147925"
+              },
+              "type_data": {
+                "self": "api.notubiz.nl/agenda_items/agenda_points/8309997",
+                "heading": false,
+                "title_prefix": "3.1",
+                "attributes": [
+                  {
+                    "id": 1,
+                    "reference_model": null,
+                    "value": "Raadsvoorstel Vaststelling bestemmingsplan ‘I Gestel binnen de Ring 2020 (Willem Klooslaan-Busken Huetstraat)’ (Woordmeldingen: VVD, GL, LPF, D66, PvdA)"
+                  },
+                  {
+                    "id": 24,
+                    "reference_model": null,
+                    "value": "24bst00191"
+                  },
+                  {
+                    "id": 23,
+                    "reference_model": null,
+                    "value": "M. Verhees"
+                  }
+                ]
+              },
+              "documents": [],
+              "agenda_items": [],
+              "id": 8309997,
+              "type": "agenda_point",
+              "order": 1,
+              "start_offset": "7838",
+              "end_offset": "8315",
+              "start_date": null,
+              "end_date": null,
+              "confidential": 0,
+              "permission_group": "public",
+              "last_modified": "2024-04-16 09:13:16",
+              "module_items": [
+                {
+                  "id": 924343,
+                  "self": "api.notubiz.nl/modules/0/items/924343",
+                  "field_id": 54
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "parent": null,
+          "meeting": {
+            "id": 1147925,
+            "self": "api.notubiz.nl/events/meetings/1147925"
+          },
+          "type_data": {
+            "self": "api.notubiz.nl/agenda_items/agenda_points/8327969",
+            "heading": false,
+            "title_prefix": "4.",
+            "attributes": [
+              {
+                "id": 1,
+                "reference_model": null,
+                "value": "In samenhang behandelen (agendapunt 4.1 en 4.2):"
+              },
+              {
+                "id": 72,
+                "reference_model": null,
+                "value": "N. Groot"
+              },
+              {
+                "id": 82,
+                "reference_model": null,
+                "value": "2024-04-16 19:15:00"
+              },
+              {
+                "id": 68,
+                "reference_model": null,
+                "value": "T. Veuskens"
+              },
+              {
+                "id": 83,
+                "reference_model": null,
+                "value": "2024-04-16 20:15:00"
+              }
+            ]
+          },
+          "documents": [],
+          "module_items": [],
+          "id": 8327969,
+          "type": "agenda_point",
+          "order": 10,
+          "start_offset": "8315",
+          "end_offset": "8318",
+          "start_date": null,
+          "end_date": null,
+          "confidential": 0,
+          "permission_group": "public",
+          "last_modified": "2024-04-11 13:33:07",
+          "agenda_items": [
+            {
+              "parent": {
+                "id": 8327969,
+                "self": "api.notubiz.nl/agenda_items/8327969"
+              },
+              "meeting": {
+                "id": 1147925,
+                "self": "api.notubiz.nl/events/meetings/1147925"
+              },
+              "type_data": {
+                "self": "api.notubiz.nl/agenda_items/agenda_points/8306927",
+                "heading": false,
+                "title_prefix": "4.1",
+                "attributes": [
+                  {
+                    "id": 1,
+                    "reference_model": null,
+                    "value": "Raadsvoorstel Gewijzigde vaststelling I Gestel buiten de Ring 2020 (Humperdincklaan)"
+                  },
+                  {
+                    "id": 24,
+                    "reference_model": null,
+                    "value": "23bst01751"
+                  },
+                  {
+                    "id": 68,
+                    "reference_model": null,
+                    "value": "T. Veuskens"
+                  },
+                  {
+                    "id": 23,
+                    "reference_model": null,
+                    "value": "M. Verhees"
+                  },
+                  {
+                    "id": 3,
+                    "reference_model": null,
+                    "value": "<p>Behandeltijd: 3 minuten spreektijd per fractie.</p>"
+                  }
+                ]
+              },
+              "documents": [],
+              "agenda_items": [],
+              "id": 8306927,
+              "type": "agenda_point",
+              "order": 1,
+              "start_offset": "8318",
+              "end_offset": "12765",
+              "start_date": null,
+              "end_date": null,
+              "confidential": 0,
+              "permission_group": "public",
+              "last_modified": "2024-04-03 12:37:35",
+              "module_items": [
+                {
+                  "id": 922381,
+                  "self": "api.notubiz.nl/modules/0/items/922381",
+                  "field_id": 54
+                },
+                {
+                  "id": 937171,
+                  "self": "api.notubiz.nl/modules/0/items/937171",
+                  "field_id": 54
+                },
+                {
+                  "id": 937173,
+                  "self": "api.notubiz.nl/modules/0/items/937173",
+                  "field_id": 54
+                }
+              ]
+            },
+            {
+              "parent": {
+                "id": 8327969,
+                "self": "api.notubiz.nl/agenda_items/8327969"
+              },
+              "meeting": {
+                "id": 1147925,
+                "self": "api.notubiz.nl/events/meetings/1147925"
+              },
+              "type_data": {
+                "self": "api.notubiz.nl/agenda_items/agenda_points/8306931",
+                "heading": false,
+                "title_prefix": "4.2",
+                "attributes": [
+                  {
+                    "id": 1,
+                    "reference_model": null,
+                    "value": "Raadsvoorstel Vaststellen facilitaire grondexploitatie Humperdincklaan"
+                  },
+                  {
+                    "id": 24,
+                    "reference_model": null,
+                    "value": "23bst01759"
+                  },
+                  {
+                    "id": 23,
+                    "reference_model": null,
+                    "value": "R. Thijs"
+                  },
+                  {
+                    "id": 3,
+                    "reference_model": null,
+                    "value": "<p>Behandeltijd: 3 minuten spreektijd per fractie.</p>\n<p><em>De geheime stukken liggen voor de raads- en commissieleden ter inzage bij de griffie. Voor het inkijken van stukken kunt u een afspraak maken.</em></p>"
+                  }
+                ]
+              },
+              "documents": [],
+              "agenda_items": [],
+              "id": 8306931,
+              "type": "agenda_point",
+              "order": 3,
+              "start_offset": "12765",
+              "end_offset": "12958",
+              "start_date": null,
+              "end_date": null,
+              "confidential": 0,
+              "permission_group": "public",
+              "last_modified": "2024-03-29 10:08:56",
+              "module_items": [
+                {
+                  "id": 922345,
+                  "self": "api.notubiz.nl/modules/0/items/922345",
+                  "field_id": 54
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "parent": null,
+          "meeting": {
+            "id": 1147925,
+            "self": "api.notubiz.nl/events/meetings/1147925"
+          },
+          "type_data": {
+            "self": "api.notubiz.nl/agenda_items/agenda_points/8329710",
+            "heading": false,
+            "title_prefix": "5.",
+            "attributes": [
+              {
+                "id": 1,
+                "reference_model": null,
+                "value": "Agenderingsverzoek VVD: Raadsinformatiebrief  Jaarrapportage woningbouwproductie 2023 en doorkijk 2024 - 2027"
+              },
+              {
+                "id": 72,
+                "reference_model": null,
+                "value": "V. Memis"
+              },
+              {
+                "id": 82,
+                "reference_model": null,
+                "value": "2024-04-16 20:15:00"
+              },
+              {
+                "id": 68,
+                "reference_model": null,
+                "value": "T. Veuskens"
+              },
+              {
+                "id": 83,
+                "reference_model": null,
+                "value": "2024-04-16 21:15:00"
+              },
+              {
+                "id": 23,
+                "reference_model": null,
+                "value": "M. Verhees"
+              },
+              {
+                "id": 3,
+                "reference_model": null,
+                "value": "<p>Op verzoek van de VVD-fractie is de RIB Jaarrapportage woningbouwproductie 2023 en doorkijk 2023 tm 2027 geagendeerd. Zie bijgevoegd agenderingsverzoek voor discussiepunten.</p>\n<p>Ook kunt u bijgaande concept vrije motie van GroenLinks betrekken bij de behandeling, ter voorbereiding op de raadsvergadering 7 mei 2024.&nbsp;</p>"
+              }
+            ]
+          },
+          "agenda_items": [],
+          "id": 8329710,
+          "type": "agenda_point",
+          "order": 11,
+          "start_offset": "12958",
+          "end_offset": "22873",
+          "start_date": null,
+          "end_date": null,
+          "confidential": 0,
+          "permission_group": "public",
+          "last_modified": "2024-04-19 11:08:05",
+          "documents": [
+            {
+              "self": "api.notubiz.nl/document/13974810",
+              "url": "https://api.notubiz.nl/document/13974810/2",
+              "title": "Agenderingsverzoek RIB Jaarrapportage woningbouwproductie 2023 en doorkijk 2023 tm 2027 (VVD)",
+              "description": "",
+              "date": "",
+              "case_code": "",
+              "policy_field": "",
+              "category": "",
+              "id": 13974810,
+              "confidential": 0,
+              "publication_date": "2024-08-25",
+              "last_modified": "2024-03-27 13:11:06",
+              "version": 2,
+              "types": [
+                {
+                  "id": 29,
+                  "value": "Raadsinformatiebrief"
+                }
+              ],
+              "versions": [
+                {
+                  "type": "file",
+                  "mime_type": "application/pdf",
+                  "file_name": "Agendering Raadsinformatiebrief Jaarrapportage woningbouwproductie 2023 en doorkijk 2023 tm 2027 (VVD).pdf",
+                  "file_size": 61671,
+                  "id": 2
+                },
+                {
+                  "type": "file",
+                  "mime_type": "application/pdf",
+                  "file_name": "Agendering Raadsinformatiebrief Jaarrapportage woningbouwproductie 2023 en doorkijk 2023 tm 2027 (VVD).pdf",
+                  "file_size": 61671,
+                  "id": 1
+                }
+              ]
+            },
+            {
+              "self": "api.notubiz.nl/document/14035620",
+              "url": "https://api.notubiz.nl/document/14035620/1",
+              "title": "Concept Vrije Motie Woonraad (GL)",
+              "description": "",
+              "date": "",
+              "case_code": "",
+              "policy_field": "",
+              "category": "",
+              "id": 14035620,
+              "confidential": 0,
+              "publication_date": "2024-08-25",
+              "last_modified": "2024-04-11 09:04:59",
+              "version": 1,
+              "types": [
+                {
+                  "id": 1220,
+                  "value": "Vrije motie"
+                }
+              ],
+              "versions": [
+                {
+                  "type": "file",
+                  "mime_type": "application/pdf",
+                  "file_name": "Concept Vrije Motie Woonraad (GL).pdf",
+                  "file_size": 40596,
+                  "id": 1
+                }
+              ]
+            },
+            {
+              "self": "api.notubiz.nl/document/14047307",
+              "url": "https://api.notubiz.nl/document/14047307/1",
+              "title": "Beantwoording technische vragen VVD, 50PLUS, PvdA - Raadsavond wonen 26 maart 2024",
+              "description": "",
+              "date": "",
+              "case_code": "",
+              "policy_field": "",
+              "category": "",
+              "id": 14047307,
+              "confidential": 0,
+              "publication_date": "2024-08-25",
+              "last_modified": "2024-04-12 12:02:15",
+              "version": 1,
+              "types": [
+                {
+                  "id": 243,
+                  "value": "Technische vragen"
+                }
+              ],
+              "versions": [
+                {
+                  "type": "file",
+                  "mime_type": "application/pdf",
+                  "file_name": "Beantwoording technische vragen VVD, 50PLUS, PvdA - Raadsavond wonen 26 maart 2024.pdf",
+                  "file_size": 194212,
+                  "id": 1
+                }
+              ]
+            },
+            {
+              "self": "api.notubiz.nl/document/14073513",
+              "url": "https://api.notubiz.nl/document/14073513/1",
+              "title": "Commissieadvies Agenderingsverzoek VVD Raadsinformatiebrief Jaarrapportage woningbouwproductie 2023 en doorkijk 2024 - 2027",
+              "description": "",
+              "date": "",
+              "case_code": "",
+              "policy_field": "",
+              "category": "",
+              "id": 14073513,
+              "confidential": 0,
+              "publication_date": "2024-08-25",
+              "last_modified": "2024-04-19 11:08:05",
+              "version": 1,
+              "types": [
+                {
+                  "id": 109,
+                  "value": "Commissieadvies"
+                }
+              ],
+              "versions": [
+                {
+                  "type": "file",
+                  "mime_type": "application/pdf",
+                  "file_name": "Commissieadvies Agenderingsverzoek VVD Raadsinformatiebrief Jaarrapportage woningbouwproductie 2023 en doorkijk 2024 - 2027.pdf",
+                  "file_size": 25666,
+                  "id": 1
+                }
+              ]
+            }
+          ],
+          "module_items": [
+            {
+              "id": 924333,
+              "self": "api.notubiz.nl/modules/0/items/924333",
+              "field_id": 54
+            },
+            {
+              "id": 937159,
+              "self": "api.notubiz.nl/modules/0/items/937159",
+              "field_id": 54
+            },
+            {
+              "id": 937161,
+              "self": "api.notubiz.nl/modules/0/items/937161",
+              "field_id": 54
+            }
+          ]
+        },
+        {
+          "parent": null,
+          "meeting": {
+            "id": 1147925,
+            "self": "api.notubiz.nl/events/meetings/1147925"
+          },
+          "type_data": {
+            "self": "api.notubiz.nl/agenda_items/agenda_points/7853356",
+            "heading": false,
+            "title_prefix": "6.",
+            "attributes": [
+              {
+                "id": 1,
+                "reference_model": null,
+                "value": "Sluiting meningsvormende vergadering"
+              },
+              {
+                "id": 82,
+                "reference_model": null,
+                "value": "2024-04-16 21:15:00"
+              },
+              {
+                "id": 83,
+                "reference_model": null,
+                "value": "2024-04-16 21:15:00"
+              }
+            ]
+          },
+          "documents": [],
+          "agenda_items": [],
+          "module_items": [],
+          "id": 7853356,
+          "type": "agenda_point",
+          "order": 15,
+          "start_offset": "22873",
+          "end_offset": "22877",
+          "start_date": null,
+          "end_date": null,
+          "confidential": 0,
+          "permission_group": "public",
+          "last_modified": "2024-03-29 10:08:56"
+        }
+      ]
+    }
+  }
