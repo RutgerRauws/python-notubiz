@@ -5,6 +5,7 @@ from datetime import datetime
 from typing import Optional, Dict, Any
 
 from notubiz.api._helpers import parse_date, get_attribute, get_title, get_description
+from notubiz.api.document import Document, NotubizDocument
 
 @define
 class AgendaItem:
@@ -15,6 +16,7 @@ class AgendaItem:
     start_date : Optional[datetime]
     end_date : Optional[datetime]
     is_heading : bool
+    documents: list[Document]
     agenda_items : list['AgendaItem'] = field(factory=list)
 
 
@@ -34,7 +36,7 @@ def agenda_item_structure_hook(data: Dict[str, Any], cls: type) -> AgendaItem:
     type_data = data.get("type_data", {})
     attributes = type_data["attributes"]
 
-    # Use cattrs to structure the Meeting fields
+    documents = [NotubizDocument.from_json(item) for item in data["documents"]]
     agenda_items = NotubizAgendaItems.from_json(data["agenda_items"])
 
     return AgendaItem(
@@ -45,6 +47,7 @@ def agenda_item_structure_hook(data: Dict[str, Any], cls: type) -> AgendaItem:
         start_date = get_start_date(attributes),
         end_date = get_end_date(attributes),
         is_heading = data["type_data"]["heading"],
+        documents = documents,
         agenda_items = agenda_items
     )
 
