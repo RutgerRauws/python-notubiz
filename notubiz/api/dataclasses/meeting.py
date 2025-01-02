@@ -9,37 +9,31 @@ from typing import Optional, Dict, Any
 
 @define
 class Meeting:
+    # Auto-filled
     id : int
     url : str
-    title : Optional[str] = field(default=None)
-    location : Optional[str] = field(default=None)
-    agenda_items : list[AgendaItem] = field(factory=list)
+
+    # Manually filled
+    title : Optional[str] = field(init=False)
+    location : Optional[str] = field(init=False)
+    agenda_items : list[AgendaItem] = field(init=False)
 
     @staticmethod
     def from_json(json_object : any) -> 'Meeting':
         c = cattrs.Converter()
-        c.register_structure_hook(Meeting, meeting_structure_hook)
+
+        meeting_json = json_object.get("meeting", {})
 
         try:
-            meeting = c.structure(json_object["meeting"], Meeting)
+            meeting = c.structure(meeting_json, Meeting)
         except Exception as exc:
             print("\n".join(transform_error(exc)))
             quit()
 
+        attributes = meeting_json.get("attributes", [])
+        meeting.title = get_title(attributes)
+        meeting.location = get_location(attributes)
+
+        meeting.agenda_items = AgendaItems.from_json(meeting_json.get("agenda_items"))
+
         return meeting
-
-def meeting_structure_hook(data: Dict[str, Any], cls: type) -> Meeting:
-    attributes = data.get("attributes", [])
-    title = get_title(attributes)
-    location = get_location(attributes)
-
-    # Use cattrs to structure the Meeting fields
-    agenda_items = AgendaItems.from_json(data["agenda_items"])
-
-    return Meeting(
-        id=data["id"],
-        url=data["url"],
-        title=title,
-        location=location,
-        agenda_items=agenda_items
-    )
