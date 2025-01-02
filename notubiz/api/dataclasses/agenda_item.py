@@ -5,7 +5,7 @@ from datetime import datetime
 from typing import Optional, Dict, Any
 
 from notubiz.api._helpers import parse_date, get_attribute, get_title, get_description
-from notubiz.api.document import Document, NotubizDocument
+from notubiz.api.dataclasses.document import Document
 
 @define
 class AgendaItem:
@@ -19,6 +19,18 @@ class AgendaItem:
     documents: list[Document]
     agenda_items : list['AgendaItem'] = field(factory=list)
 
+class AgendaItems:
+    @staticmethod
+    def from_json(json_object : any) -> list[AgendaItem]:
+        c = cattrs.Converter()
+        
+        c.register_structure_hook(datetime, lambda date_string, _: parse_date(date_string))
+        c.register_structure_hook(AgendaItem, agenda_item_structure_hook)
+
+        agenda_items = [c.structure(item, AgendaItem) for item in json_object]
+
+        return agenda_items
+    
 
 def get_start_date(attributes) -> datetime:
     try:
@@ -36,8 +48,8 @@ def agenda_item_structure_hook(data: Dict[str, Any], cls: type) -> AgendaItem:
     type_data = data.get("type_data", {})
     attributes = type_data["attributes"]
 
-    documents = [NotubizDocument.from_json(item) for item in data["documents"]]
-    agenda_items = NotubizAgendaItems.from_json(data["agenda_items"])
+    documents = [Document.from_json(item) for item in data["documents"]]
+    agenda_items = AgendaItems.from_json(data["agenda_items"])
 
     return AgendaItem(
         id=data["id"],
@@ -51,15 +63,3 @@ def agenda_item_structure_hook(data: Dict[str, Any], cls: type) -> AgendaItem:
         agenda_items = agenda_items
     )
 
-
-class NotubizAgendaItems:
-    def from_json(json_object : any) -> list[AgendaItem]:
-        c = cattrs.Converter()
-        
-        c.register_structure_hook(datetime, lambda date_string, _: parse_date(date_string))
-        c.register_structure_hook(AgendaItem, agenda_item_structure_hook)
-
-        agenda_items = [c.structure(item, AgendaItem) for item in json_object]
-
-        return agenda_items
-    

@@ -1,5 +1,5 @@
 import notubiz
-from notubiz.api.meeting import NotubizMeeting
+from notubiz.api.dataclasses.meeting import Meeting
 
 import pytest
 from test.helpers import read_json
@@ -14,10 +14,10 @@ def input_json():
 
 @pytest.fixture(scope="session")
 def input_meeting():
-    return NotubizMeeting.from_json(test_file_path)
+    return Meeting.from_json(test_file_path)
 
 def test_meeting_general_info(input_json):
-    meeting = NotubizMeeting.from_json(input_json)
+    meeting = Meeting.from_json(input_json)
     
     # We test all fields because they are not straight-up deserialized
     assert meeting.id == 1147925
@@ -28,7 +28,7 @@ def test_meeting_general_info(input_json):
 
 
 def test_basic_agenda_item(input_json):
-    meeting = NotubizMeeting.from_json(input_json)
+    meeting = Meeting.from_json(input_json)
 
     agenda_item = meeting.agenda_items[2]
     assert agenda_item.id == 8329704
@@ -40,7 +40,7 @@ def test_basic_agenda_item(input_json):
     assert agenda_item.is_heading == True
 
 def test_nested_agenda_items(input_json):
-    meeting = NotubizMeeting.from_json(input_json)
+    meeting = Meeting.from_json(input_json)
     agenda_items = meeting.agenda_items
 
     assert len(agenda_items[0].agenda_items) == 0

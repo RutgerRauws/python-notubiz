@@ -2,14 +2,14 @@
 import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-import notubiz
-import notubiz.api.meeting
+from notubiz import ApiClient, Configuration
+from notubiz.api.clients.meeting_client import MeetingClient
 
-configuration = notubiz.Configuration(organisation_id = 686) # Gemeente Eindhoven
+configuration = Configuration(organisation_id = 686) # Gemeente Eindhoven
 
-api_client = notubiz.ApiClient(configuration)
+api_client = ApiClient(configuration)
 
-meeting_client = notubiz.api.NotubizMeeting(api_client)
+meeting_client = MeetingClient(api_client)
 
 meeting = meeting_client.get(1147925)
 

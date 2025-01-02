@@ -1,5 +1,5 @@
 import notubiz
-from notubiz.api.speakers import NotubizSpeakers
+from notubiz.api.dataclasses.speakers import Speakers
 
 import pytest
 from test.helpers import read_json
@@ -10,10 +10,10 @@ def input_json():
 
 @pytest.fixture(scope="session")
 def input_speakers():
-    return NotubizSpeakers.from_json(read_json("./test/data/speakers.json"))
+    return Speakers.from_json(read_json("./test/data/speakers.json"))
 
 def test_deserialization(input_json):
-    speakers = NotubizSpeakers.from_json(input_json).speakers
+    speakers = Speakers.from_json(input_json).speakers
     
     # Let's not test the entire attrs/cattrs package. 
     # The serialization did not throw an exception if we reach these lines

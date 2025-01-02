@@ -4,14 +4,14 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from datetime import datetime
 
-import notubiz
-import notubiz.api.event
+from notubiz import ApiClient, Configuration
+from notubiz.api.clients import EventsClient
 
-configuration = notubiz.Configuration(organisation_id = 686) # Gemeente Eindhoven
+configuration = Configuration(organisation_id = 686) # Gemeente Eindhoven
 
-api_client = notubiz.ApiClient(configuration)
+api_client = ApiClient(configuration)
 
-event_client = notubiz.api.event.EventApi(api_client)
+event_client = EventsClient(api_client)
 
 start_date = datetime(2019, 1, 1)
 end_date = datetime(2020, 3, 31, 23, 59, 59)

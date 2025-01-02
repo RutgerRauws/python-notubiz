@@ -1,5 +1,5 @@
 import notubiz
-from notubiz.api.event import Event
+from notubiz.api.dataclasses.event import Event
 
 import pytest
 from test.helpers import read_json
