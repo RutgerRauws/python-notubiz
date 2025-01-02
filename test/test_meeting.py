@@ -55,3 +55,13 @@ def test_nested_agenda_items(input_json):
     assert len(agenda_items[3].agenda_items[0].agenda_items) == 0
     assert len(agenda_items[4].agenda_items[0].agenda_items) == 0
     assert len(agenda_items[4].agenda_items[1].agenda_items) == 0
+
+def test_documents(input_json):
+    meeting = Meeting.from_json(input_json)
+
+    assert len(meeting.agenda_items[0].documents) == 0
+    assert len(meeting.agenda_items[5].documents) == 4
+
+    assert meeting.agenda_items[5].documents[1].title == "Concept Vrije Motie Woonraad (GL)"
+    assert meeting.agenda_items[5].documents[1].versions[0].mime_type == "application/pdf"
+    assert meeting.agenda_items[5].documents[1].versions[0].id == 1
