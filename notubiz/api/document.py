@@ -24,7 +24,4 @@ class NotubizDocument:
         c = cattrs.Converter()
         c.register_structure_hook(datetime, lambda d, _: datetime.strptime(d, "%Y-%m-%d %H:%M:%S"))
 
-        print(json_object)
-        print("AA")
-
         return c.structure(json_object, Document)
