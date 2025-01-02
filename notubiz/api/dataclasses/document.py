@@ -1,6 +1,6 @@
 from attrs import define, field
 import cattrs
-from typing import Optional, Dict, Any, List
+from typing import Optional, List
 from datetime import datetime
 
 @define
@@ -19,8 +19,8 @@ class Document:
     versions: List[DocumentVersion]
     id: Optional[int] = field(default=None) # Apparently some documents have no ID
 
-class NotubizDocument:
-    def from_json(json_object : any) -> Document:
+    @staticmethod
+    def from_json(json_object : any) -> 'Document':
         c = cattrs.Converter()
         c.register_structure_hook(datetime, lambda d, _: datetime.strptime(d, "%Y-%m-%d %H:%M:%S"))
 

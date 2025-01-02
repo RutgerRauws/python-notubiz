@@ -2,9 +2,6 @@ from attrs import define
 import cattrs
 from cattrs import transform_error
 from cattrs.gen import make_dict_unstructure_fn, make_dict_structure_fn, override
-from typing import Optional
-
-from notubiz.api_client import ApiClient
 
 @define
 class SpeakerAttributes:
@@ -48,17 +45,8 @@ class Speakers:
         
         return None
     
-class NotubizSpeakers:
-    api_client : ApiClient
-
-    def __init__(self, api_client : ApiClient):
-        self.api_client = api_client
-
-    def get(self) -> Speakers:
-        json_object = self.api_client.get("speakers")
-        return NotubizSpeakers.from_json(json_object)
-    
-    def from_json(json_object : any) -> Speakers:
+    @staticmethod
+    def from_json(json_object : any) -> 'Speakers':
         c = cattrs.Converter()
 
         unst_hook = make_dict_unstructure_fn(Speakers, c, speakers=override(rename="speaker"))
