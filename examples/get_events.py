@@ -2,6 +2,8 @@
 import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+from datetime import datetime
+
 import notubiz
 import notubiz.api.event
 
@@ -11,8 +13,10 @@ api_client = notubiz.ApiClient(configuration)
 
 event_client = notubiz.api.event.EventApi(api_client)
 
-event = event_client.get(1229974)
+start_date = datetime(2019, 1, 1)
+end_date = datetime(2020, 3, 31, 23, 59, 59)
 
-print(event.title)
-# for event. in meeting.agenda_items:
-#     print("  {} - {}".format(agenda_item.start_date, agenda_item.title))
+events = event_client.get(start_date, end_date)
+
+for event in events:
+    print("{} - {} ({})".format(event.plannings[0].start_date, event.title, event.location))
