@@ -9,7 +9,11 @@ class ApiClient:
     configuration : Configuration
 
     def get_base_payload(self) -> dict:
-        return {'format': 'json', 'organisation': self.configuration.organisation_id}
+        return {
+            'format': 'json',
+            'version': self.configuration.api_version,
+            'organisation': self.configuration.organisation_id
+        }
     
     def get(self, relative_path : str, extra_payload : dict = None) -> any:
         request_url = self.configuration.base_url + relative_path

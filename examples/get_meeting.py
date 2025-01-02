@@ -16,3 +16,6 @@ meeting = meeting_client.get(1147925)
 print(meeting.title)
 for agenda_item in meeting.agenda_items:
     print("  {} - {}".format(agenda_item.start_date, agenda_item.title))
+
+    for sub_agenda_item in agenda_item.agenda_items:
+        print("                      - {}".format(sub_agenda_item.title))

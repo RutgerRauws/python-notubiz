@@ -16,7 +16,7 @@ def input_json():
 def input_meeting():
     return NotubizMeeting.from_json(test_file_path)
 
-def test_deserialization(input_json):
+def test_meeting_general_info(input_json):
     meeting = NotubizMeeting.from_json(input_json)
     
     # We test all fields because they are not straight-up deserialized
@@ -26,6 +26,10 @@ def test_deserialization(input_json):
     assert meeting.location == "Raadzaal"
     assert len(meeting.agenda_items) == 7
 
+
+def test_basic_agenda_item(input_json):
+    meeting = NotubizMeeting.from_json(input_json)
+
     agenda_item = meeting.agenda_items[2]
     assert agenda_item.id == 8329704
     assert agenda_item.last_modified == datetime(2024, 3, 29, 10, 8, 56)
@@ -34,3 +38,20 @@ def test_deserialization(input_json):
     assert agenda_item.start_date == datetime(2024, 4, 16, 18, 0, 0)
     assert agenda_item.end_date == datetime(2024, 4, 16, 19, 0, 0)
     assert agenda_item.is_heading == True
+
+def test_nested_agenda_items(input_json):
+    meeting = NotubizMeeting.from_json(input_json)
+    agenda_items = meeting.agenda_items
+
+    assert len(agenda_items[0].agenda_items) == 0
+    assert len(agenda_items[1].agenda_items) == 0
+    assert len(agenda_items[2].agenda_items) == 0
+    assert len(agenda_items[3].agenda_items) == 1
+    assert len(agenda_items[4].agenda_items) == 2
+    assert len(agenda_items[5].agenda_items) == 0
+    assert len(agenda_items[6].agenda_items) == 0
+
+    # Check content of the nested agenda items
+    assert len(agenda_items[3].agenda_items[0].agenda_items) == 0
+    assert len(agenda_items[4].agenda_items[0].agenda_items) == 0
+    assert len(agenda_items[4].agenda_items[1].agenda_items) == 0
