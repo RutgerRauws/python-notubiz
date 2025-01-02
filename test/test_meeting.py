@@ -34,7 +34,7 @@ def test_basic_agenda_item(input_json):
     assert agenda_item.id == 8329704
     assert agenda_item.last_modified == datetime(2024, 3, 29, 10, 8, 56)
     assert agenda_item.title == "Pauze"
-    assert agenda_item.description == ""
+    assert agenda_item.description == None
     assert agenda_item.start_date == datetime(2024, 4, 16, 18, 0, 0)
     assert agenda_item.end_date == datetime(2024, 4, 16, 19, 0, 0)
     assert agenda_item.is_heading == True
