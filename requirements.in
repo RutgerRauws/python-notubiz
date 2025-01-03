@@ -1,4 +1,2 @@
-gcsa==2.3.0
-beautifulsoup4==4.12.3
 cattrs==23.2.3
-srt==3.5.3
+requests==2.32.3
