@@ -6,12 +6,7 @@ from typing import Optional
 
 from datetime import datetime
 from notubiz.api._helpers import parse_date, get_title, get_location
-
-@define
-class Planning:
-    # Auto-filled
-    start_date : datetime
-    end_date : Optional[datetime]
+from notubiz.api.dataclasses.planning import Planning
 
 @define
 class Event:

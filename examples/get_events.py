@@ -13,8 +13,8 @@ api_client = ApiClient(configuration)
 
 event_client = EventsClient(api_client)
 
-start_date = datetime(2019, 1, 1)
-end_date = datetime(2020, 3, 31, 23, 59, 59)
+start_date = datetime(2025, 1, 5)
+end_date = datetime(2025, 1, 7, 23, 59, 59)
 
 events = event_client.get(start_date, end_date)
 
