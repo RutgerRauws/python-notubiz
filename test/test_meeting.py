@@ -1,5 +1,5 @@
-import notubiz
 from notubiz.api.dataclasses.meeting import Meeting
+from notubiz.api._converter import get_converter
 
 import pytest
 from test.helpers import read_json
@@ -9,16 +9,15 @@ from datetime import datetime
 test_file_path = "./test/data/meeting.json"
 
 @pytest.fixture(scope="session")
-def input_json():
+def input_json() -> str:
     return read_json(test_file_path)
 
 @pytest.fixture(scope="session")
-def input_meeting():
-    return Meeting.from_json(test_file_path)
+def meeting(input_json) -> Meeting:
+    c = get_converter()
+    return c.structure(input_json, Meeting)
 
-def test_meeting_general_info(input_json):
-    meeting = Meeting.from_json(input_json)
-    
+def test_meeting_general_info(meeting):    
     # We test all fields because they are not straight-up deserialized
     assert meeting.id == 1147925
     assert meeting.url == "https://eindhoven.raadsinformatie.nl/vergadering/1147925/Meningsvorming+Raadzaal"
@@ -27,10 +26,9 @@ def test_meeting_general_info(input_json):
     assert len(meeting.agenda_items) == 7
 
 
-def test_basic_agenda_item(input_json):
-    meeting = Meeting.from_json(input_json)
-
+def test_basic_agenda_item(meeting):
     agenda_item = meeting.agenda_items[2]
+
     assert agenda_item.id == 8329704
     assert agenda_item.last_modified == datetime(2024, 3, 29, 10, 8, 56)
     assert agenda_item.title == "Pauze"
@@ -39,8 +37,7 @@ def test_basic_agenda_item(input_json):
     assert agenda_item.end_date == datetime(2024, 4, 16, 19, 0, 0)
     assert agenda_item.is_heading == True
 
-def test_nested_agenda_items(input_json):
-    meeting = Meeting.from_json(input_json)
+def test_nested_agenda_items(meeting):
     agenda_items = meeting.agenda_items
 
     assert len(agenda_items[0].agenda_items) == 0
@@ -51,14 +48,18 @@ def test_nested_agenda_items(input_json):
     assert len(agenda_items[5].agenda_items) == 0
     assert len(agenda_items[6].agenda_items) == 0
 
+    assert agenda_items[3].title == "Hamerstukken"
+    assert agenda_items[3].description == "Woordmelding"
+    assert agenda_items[4].title == "In samenhang behandelen (agendapunt 4.1 en 4.2):"
+    assert agenda_items[4].description == None
+
     # Check content of the nested agenda items
     assert len(agenda_items[3].agenda_items[0].agenda_items) == 0
     assert len(agenda_items[4].agenda_items[0].agenda_items) == 0
     assert len(agenda_items[4].agenda_items[1].agenda_items) == 0
 
-def test_documents(input_json):
-    meeting = Meeting.from_json(input_json)
 
+def test_documents(meeting):
     assert len(meeting.agenda_items[0].documents) == 0
     assert len(meeting.agenda_items[5].documents) == 4
 

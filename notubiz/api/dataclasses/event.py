@@ -1,7 +1,5 @@
 from attrs import define, field
-import cattrs
-from cattrs import transform_error
-
+from cattrs import Converter
 from typing import Optional
 
 from datetime import datetime
@@ -32,21 +30,17 @@ class Event:
     location: str = field(init=False)
     gremium_id: int = field(init=False)
 
-    @staticmethod
-    def from_json(json_object : any) -> 'Event':
-        c = cattrs.Converter()
 
-        c.register_structure_hook(datetime, lambda date_string, _: parse_date(date_string))
+def event_hook(data : dict, cls: type) -> Event:
+    # Auto-fill fields
+    converter = Converter()
+    converter.register_structure_hook(datetime, lambda date_string, _: parse_date(date_string))
+    event = converter.structure(data, Event)
 
-        try:
-            meeting = c.structure(json_object, Event)
-        except Exception as exc:
-            print("\n".join(transform_error(exc)))
-            quit()
-
-        attributes = json_object.get("attributes", [])
-        meeting.title = get_title(attributes)
-        meeting.location = get_location(attributes)
-        meeting.gremium_id = json_object["gremium"]["id"]
-
-        return meeting
+    # Manually add some fields
+    attributes = data.get("attributes", [])
+    event.title = get_title(attributes)
+    event.location = get_location(attributes)
+    event.gremium_id = data["gremium"]["id"]
+    
+    return event

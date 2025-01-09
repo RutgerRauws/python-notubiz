@@ -1,11 +1,11 @@
 from attrs import define, field
-import cattrs
-from cattrs import transform_error
+from cattr import Converter
 
-from notubiz.api._helpers import get_title, get_location
-from notubiz.api.dataclasses.agenda_item import AgendaItem, AgendaItems
+from datetime import datetime
 
-from typing import Optional, Dict, Any
+from notubiz.api._helpers import parse_date, get_title, get_location
+from notubiz.api.dataclasses.agenda_item import AgendaItem, agenda_item_hook
+from typing import Optional
 
 @define
 class Meeting:
@@ -13,27 +13,27 @@ class Meeting:
     id : int
     url : str
 
+    agenda_items : list[AgendaItem]
+
     # Manually filled
     title : Optional[str] = field(init=False)
     location : Optional[str] = field(init=False)
-    agenda_items : list[AgendaItem] = field(init=False)
 
-    @staticmethod
-    def from_json(json_object : any) -> 'Meeting':
-        c = cattrs.Converter()
 
-        meeting_json = json_object.get("meeting", {})
+def meeting_hook(data: dict[str, any], cls: type) -> Meeting:
+    # The meeting object is nested inside a 'meeting' key, let's remove that:
+    data = data["meeting"]
 
-        try:
-            meeting = c.structure(meeting_json, Meeting)
-        except Exception as exc:
-            print("\n".join(transform_error(exc)))
-            quit()
+    # Auto-fill fields
+    converter = Converter()    
+    converter.register_structure_hook(datetime, lambda date_string, _: parse_date(date_string))
+    converter.register_structure_hook(AgendaItem, agenda_item_hook)
+    
+    meeting = converter.structure(data, Meeting)
 
-        attributes = meeting_json.get("attributes", [])
-        meeting.title = get_title(attributes)
-        meeting.location = get_location(attributes)
+    # Manually add some fields
+    attributes = data.get("attributes", [])
+    meeting.title    = get_title(attributes)
+    meeting.location = get_location(attributes)
 
-        meeting.agenda_items = AgendaItems.from_json(meeting_json.get("agenda_items"))
-
-        return meeting
+    return meeting

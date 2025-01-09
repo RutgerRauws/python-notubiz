@@ -1,5 +1,5 @@
-import notubiz
 from notubiz.api.dataclasses.event import Event
+from notubiz.api._converter import get_converter
 
 import pytest
 from test.helpers import read_json
@@ -16,7 +16,8 @@ def input_json():
 @pytest.fixture(scope="session")
 def input_events(input_json):
     # Run the deserialization over the events
-    return [Event.from_json(json_event) for json_event in input_json]
+    c = get_converter()
+    return [c.structure(json_event, Event) for json_event in input_json]
 
 
 def test_event_general_info(input_events):

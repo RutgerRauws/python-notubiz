@@ -1,36 +1,26 @@
 from attrs import define, field
-import cattrs
+from cattr import Converter
 
 from datetime import datetime
-from typing import Optional, Dict, Any
+from typing import Optional
 
 from notubiz.api._helpers import parse_date, get_attribute, get_title, get_description
 from notubiz.api.dataclasses.document import Document
 
 @define
 class AgendaItem:
+    # Auto-filled fields
     id : int
     last_modified : datetime
-    title : str
-    description: str
-    start_date : Optional[datetime]
-    end_date : Optional[datetime]
-    is_heading : bool
     documents: list[Document]
+
+    # Filled manually
+    title : str = field(init=False)
+    description: str = field(init=False)
+    start_date : Optional[datetime] = field(init=False)
+    end_date : Optional[datetime] = field(init=False)
+    is_heading : bool = field(init=False)
     agenda_items : list['AgendaItem'] = field(factory=list)
-
-class AgendaItems:
-    @staticmethod
-    def from_json(json_object : any) -> list[AgendaItem]:
-        c = cattrs.Converter()
-        
-        c.register_structure_hook(datetime, lambda date_string, _: parse_date(date_string))
-        c.register_structure_hook(AgendaItem, agenda_item_structure_hook)
-
-        agenda_items = [c.structure(item, AgendaItem) for item in json_object]
-
-        return agenda_items
-    
 
 def get_start_date(attributes) -> datetime:
     try:
@@ -44,22 +34,30 @@ def get_end_date(attributes) -> datetime:
     except Exception: # The nested agenda items seem to have no end dates.
         return None
 
-def agenda_item_structure_hook(data: Dict[str, Any], cls: type) -> AgendaItem:
+def agenda_item_hook(data: dict[str, any], cls: type) -> AgendaItem:
+    # Auto-fill fields
+
+    converter = Converter()
+    converter.register_structure_hook(datetime, lambda date_string, _: parse_date(date_string))
+    converter.register_structure_hook(AgendaItem, agenda_item_hook)
+    documents = [converter.structure(item, Document) for item in data.get("documents", [])]
+
+    agenda_item = AgendaItem(
+        id = data.get("id"),
+        last_modified = parse_date(data.get("last_modified")), 
+        documents = documents
+    )
+
+    # Manually add some fields
     type_data = data.get("type_data", {})
     attributes = type_data["attributes"]
 
-    documents = [Document.from_json(item) for item in data["documents"]]
-    agenda_items = AgendaItems.from_json(data["agenda_items"])
+    agenda_item.title = get_title(attributes)
+    agenda_item.description = get_description(attributes)
+    agenda_item.start_date = get_start_date(attributes)
+    agenda_item.end_date = get_end_date(attributes)
+    agenda_item.is_heading = type_data.get("heading", False)
 
-    return AgendaItem(
-        id=data["id"],
-        last_modified = parse_date(data["last_modified"]),
-        title = get_title(attributes),
-        description = get_description(attributes),
-        start_date = get_start_date(attributes),
-        end_date = get_end_date(attributes),
-        is_heading = data["type_data"]["heading"],
-        documents = documents,
-        agenda_items = agenda_items
-    )
-
+    agenda_item.agenda_items = [converter.structure(item, AgendaItem) for item in data.get("agenda_items", [])]
+    
+    return agenda_item
