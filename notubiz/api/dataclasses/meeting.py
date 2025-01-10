@@ -12,6 +12,14 @@ class Meeting:
     # Auto-filled
     id : int
     url : str
+    body: str
+    confidential: bool
+    announcement: bool
+    canceled: bool
+    inactive: bool
+    creation_date: datetime
+    last_modified: datetime
+    live: bool
 
     agenda_items : list[AgendaItem]
 
