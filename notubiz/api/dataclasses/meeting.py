@@ -37,7 +37,7 @@ def meeting_hook(data: dict[str, any], cls: type) -> Meeting:
     converter.register_structure_hook(datetime, lambda date_string, _: parse_date(date_string))
     converter.register_structure_hook(AgendaItem, agenda_item_hook)
     
-    meeting = converter.structure(data, Meeting)
+    meeting = converter.structure(data, cls)
 
     # Manually add some fields
     attributes = data.get("attributes", [])
