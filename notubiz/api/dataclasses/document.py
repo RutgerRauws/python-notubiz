@@ -5,9 +5,11 @@ from datetime import datetime
 @define
 class DocumentVersion:
     id: int
-    file_name: str
-    file_size: int
-    mime_type: Optional[str] = field(default="") # Apparently some documents have no MIME type
+    type: str # Known possible values: file, link
+    url: Optional[str]       = field(default=None)
+    file_name: Optional[str] = field(default=None)
+    file_size: Optional[int] = field(default=None)
+    mime_type: Optional[str] = field(default=None) # Some documents have no MIME type
 
 @define
 class Document:
