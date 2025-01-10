@@ -49,6 +49,7 @@ from cattrs import Converter
 from notubiz.api.dataclasses.event import Event
 from notubiz.api.dataclasses.planning import Planning
 
+
 @define
 class AssemblyMeeting:
     id: int
@@ -69,12 +70,31 @@ class Assembly(Event):
     # def from_parent(event : Event) -> 'Assembly':
     #     return Assembly(*event.args())
 
-    @staticmethod
-    def from_json(json_object : any) -> 'Assembly':
-        c = Converter()
-        #include_subclasses(Event, c)
 
-        event = Event.from_json(json_object["assembly"])
 
-        assembly = c.structure(event, Assembly)
-        assembly.meetings = [c.structure(item, AssemblyMeeting) for item in json_object["meetings"]]
+
+
+
+
+
+
+
+
+
+## NIET NODIG?
+#     @staticmethod
+#     def from_json(json_object : any) -> 'Assembly':
+#         c = Converter()
+#         #include_subclasses(Event, c)
+
+#         event = Event.from_json(json_object["assembly"])
+
+#         assembly = c.structure(event, Assembly)
+#         assembly.meetings = [c.structure(item, AssemblyMeeting) for item in json_object["meetings"]]
+
+# def assembly_hook(data : dict, cls: type) -> Assembly:
+#     converter = get_converter()
+
+#     data["meetings"] = [converter.structure(item, AssemblyMeeting) for item in data["meetings"]]
+
+#     return cls(**data)

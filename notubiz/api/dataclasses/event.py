@@ -35,7 +35,7 @@ def event_hook(data : dict, cls: type) -> Event:
     # Auto-fill fields
     converter = Converter()
     converter.register_structure_hook(datetime, lambda date_string, _: parse_date(date_string))
-    event = converter.structure(data, Event)
+    event = converter.structure(data, cls)
 
     # Manually add some fields
     attributes = data.get("attributes", [])
