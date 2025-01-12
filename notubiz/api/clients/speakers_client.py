@@ -1,5 +1,6 @@
 from notubiz.api_client import ApiClient
 from notubiz.api.dataclasses import Speakers
+from notubiz.api._converter import get_converter
 
 class SpeakersClient:
     api_client : ApiClient
@@ -9,4 +10,4 @@ class SpeakersClient:
 
     def get(self) -> Speakers:
         json_object = self.api_client.get("speakers")
-        return Speakers.from_json(json_object)
+        return get_converter().structure(json_object, Speakers)

@@ -2,6 +2,8 @@ from notubiz import ApiClient
 from notubiz.api.dataclasses import Event
 from datetime import datetime
 
+from notubiz.api._converter import get_converter
+
 class EventsClient:
     api_client : ApiClient
     
@@ -10,6 +12,7 @@ class EventsClient:
 
 
     def get(self, date_from: datetime, date_to: datetime, gremia: list[int] = None) -> list[Event]:
+        converter = get_converter()
 
         json_events : list[dict] = []
         has_more_pages = True
@@ -34,4 +37,4 @@ class EventsClient:
             page += 1
         
         # Now run the deserialization based on the merged events
-        return [Event.from_json(json_event) for json_event in json_events]
+        return [converter.structure(json_event, Event) for json_event in json_events]

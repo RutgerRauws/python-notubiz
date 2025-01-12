@@ -1,17 +1,19 @@
-from attrs import define
-import cattrs
-from cattrs import transform_error
-from cattrs.gen import make_dict_unstructure_fn, make_dict_structure_fn, override
+from attrs import define, field
+from cattr import Converter
+from datetime import datetime
+
+from notubiz.api._helpers import parse_date
 
 @define
 class SpeakerAttributes:
     id: int
     person_id: int
     active: int
-    last_modified: str
+    last_modified: datetime
 
 @define
 class Speaker:
+    # Auto-filled
     photo: str
     party: str
     email: str
@@ -21,10 +23,24 @@ class Speaker:
     sex: str
     function: str
     url: str
-    attributes: SpeakerAttributes
+
+    # Manually filled
+    attributes: SpeakerAttributes = field(init=False)
 
     def full_name(self):
         return self.firstname + " " + self.lastname
+
+def speaker_hook(data: dict[str, any], cls: type) -> Speaker:
+    # Auto-fill fields
+    converter = Converter()    
+    converter.register_structure_hook(datetime, lambda date_string, _: parse_date(date_string))
+    
+    speaker = converter.structure(data, cls)
+
+    # Manually add some fields
+    speaker.attributes = converter.structure(data.get("@attributes", {}), SpeakerAttributes)
+
+    return speaker
 
 @define
 class Speakers:
@@ -45,24 +61,12 @@ class Speakers:
         
         return None
     
-    @staticmethod
-    def from_json(json_object : any) -> 'Speakers':
-        c = cattrs.Converter()
+def speakers_hook(data: dict[str, any], cls: type) -> Speakers:
+    speakers_json_arary = data["speakers"]["speaker"]
 
-        unst_hook = make_dict_unstructure_fn(Speakers, c, speakers=override(rename="speaker"))
-        st_hook = make_dict_structure_fn(Speakers, c, speakers=override(rename="speaker"))
-        c.register_unstructure_hook(Speakers, unst_hook)
-        c.register_structure_hook(Speakers, st_hook)
+    c = Converter()
+    c.register_structure_hook(Speaker, speaker_hook)
 
-        unst_hook = make_dict_unstructure_fn(Speaker, c, attributes=override(rename="@attributes"))
-        st_hook = make_dict_structure_fn(Speaker, c, attributes=override(rename="@attributes"))
-        c.register_unstructure_hook(Speaker, unst_hook)
-        c.register_structure_hook(Speaker, st_hook)
+    speakers = [c.structure(speaker_json, Speaker) for speaker_json in speakers_json_arary]
 
-        try:
-            speakers = c.structure(json_object["speakers"], Speakers)
-        except Exception as exc:
-            print("\n".join(transform_error(exc)))
-            quit()
-
-        return speakers
+    return Speakers(speakers)

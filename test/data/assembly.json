@@ -1,0 +1,101 @@
+{
+    "assembly": {
+      "organisation": {
+        "id": 686,
+        "self": "api.notubiz.nl/organisations/686"
+      },
+      "gremium": {
+        "id": 12330,
+        "self": "api.notubiz.nl/organisations/686/gremia/12330"
+      },
+      "module_items": [],
+      "documents": [],
+      "id": 1253866,
+      "self": "/events/assemblies/1253866",
+      "type": "assembly",
+      "permission_group": "public",
+      "body": "council",
+      "confidential": 0,
+      "announcement": true,
+      "canceled": false,
+      "inactive": false,
+      "creation_date": "2024-07-01 09:37:21",
+      "last_modified": "2024-12-13 10:33:57",
+      "order": null,
+      "live": false,
+      "archive_state": "unarchived",
+      "archive_state_last_modified": null,
+      "allow_subscriptions": false,
+      "subscriptions": [],
+      "salutation": null,
+      "template": false,
+      "attributes": [
+        {
+          "id": 1,
+          "reference_model": null,
+          "value": "Raadsavond"
+        },
+        {
+          "id": 50,
+          "reference_model": null,
+          "value": "Raadzaal / commissiekamer"
+        },
+        {
+          "id": 72,
+          "reference_model": null,
+          "value": ""
+        },
+        {
+          "id": 68,
+          "reference_model": null,
+          "value": ""
+        },
+        {
+          "id": 3,
+          "reference_model": null,
+          "value": ""
+        }
+      ],
+      "plannings": [
+        {
+          "start_date": "2025-01-07 14:00:00",
+          "end_date": null
+        }
+      ],
+      "meetings": [
+        {
+          "id": 1253869,
+          "self": "api.notubiz.nl/events/meetings/1253869",
+          "order": 1,
+          "plannings": [
+            {
+              "start_date": "2025-01-07 17:00:00",
+              "end_date": "2025-01-07 21:30:00"
+            }
+          ]
+        },
+        {
+          "id": 1253867,
+          "self": "api.notubiz.nl/events/meetings/1253867",
+          "order": 4,
+          "plannings": [
+            {
+              "start_date": "2025-01-07 17:00:00",
+              "end_date": "2025-01-07 21:00:00"
+            }
+          ]
+        },
+        {
+          "id": 1253868,
+          "self": "api.notubiz.nl/events/meetings/1253868",
+          "order": 6,
+          "plannings": [
+            {
+              "start_date": "2025-01-07 14:00:00",
+              "end_date": "2025-01-07 21:00:00"
+            }
+          ]
+        }
+      ]
+    }
+  }
